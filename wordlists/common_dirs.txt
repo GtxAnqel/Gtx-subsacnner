@@ -1,0 +1,11 @@
+admin
+login
+dashboard
+panel
+cpanel
+wp-admin
+user
+backup
+uploads
+images
+config
