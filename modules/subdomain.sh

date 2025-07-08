@@ -1,0 +1,19 @@
+#!/bin/bash
+
+source ../colors.sh
+
+function subdomain_enum() {
+  read -rp "Hedef domain: " domain
+  if [[ -z "$domain" ]]; then
+    echo -e "${RED}Domain boş olamaz.${RESET}"
+    exit 1
+  fi
+
+  echo -e "${YELLOW}Subdomain aranıyor...${RESET}"
+  # Basit örnek: crt.sh üzerinden subdomain çekme
+  curl -s "https://crt.sh/?q=%25.$domain&output=json" | jq -r '.[].name_value' | sort -u
+  echo ""
+  read -rp "Devam etmek için Enter'a basın..."
+}
+
+subdomain_enum
